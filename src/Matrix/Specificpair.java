@@ -15,7 +15,7 @@ public class Specificpair {
         }
         for(int i=n-2;i>=0;i--){
             for(int j=n-2;j>=0;j--){
-                maxmat[i][j]=Math.max(maxmat[i+1][j+1],maxmat[i+1][j]);
+                maxmat[i][j]=Math.max(mat[i][j],Math.max(maxmat[i+1][j+1],maxmat[i+1][j]));
             }
         }
         for(int i=n-2;i>=0;i--){
