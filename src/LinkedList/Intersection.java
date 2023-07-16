@@ -12,19 +12,16 @@ public class Intersection {
         }
     }
    public static Node intersect(Node h1,Node h2){
-    HashSet<Node>hn=new HashSet<>();
-    while(h1!=null){
-        hn.add(h1);
-        h1=h1.next;
+    if(h1==null||h2==null){
+        return null;
     }
-    while(h2!=null){
-        if(hn.contains(h2)){
-            System.out.println("found out");
-            return h2;
-        }
-        h2=h2.next;
+    Node d1=h1;
+    Node d2=h2;
+    while(d1!=d2){
+        d1=d1==null?h2:d1.next;
+        d2=d2==null?h1:d2.next;
     }
-    return null;
+    return d1;
     }
     public static Node buildLinkedList(){
         Scanner sc = new Scanner(System.in);
