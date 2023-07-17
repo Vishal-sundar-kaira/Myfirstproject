@@ -37,9 +37,6 @@ public class Reversegroup {
         Node start = new Node(initial);
         Node current = start;
 
-        // System.out.print("Enter the number of elements: ");
-        // int n = scanner.nextInt();
-
         System.out.print("Enter rest elements: ");
         int data=sc.nextInt();
         while(data!=-1) {
