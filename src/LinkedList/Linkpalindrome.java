@@ -2,7 +2,7 @@ package LinkedList;
 
 import java.util.Scanner;
 
-public class Reversegroup {
+public class Linkpalindrome {
     static int count=1;
     static class Node{
         int data;
@@ -12,23 +12,38 @@ public class Reversegroup {
             next=null;
         }
     }
-    public static Node Reverse(Node head,int k){
+    public static Node Reverse(Node head){
         Node cur=head;
-        Node prev=null;
         Node next=null;
-        int i=0;
-        if(count<k){
-            return head;
-        }
-        for(i=0;i<k;i++){
+        Node prev=null;
+        while(cur!=null){
             next=cur.next;
             cur.next=prev;
             prev=cur;
             cur=next;
         }
-        count-=k;
-        head.next=Reverse(next,k);
         return prev;
+    }
+    public static boolean palindrome(Node head){
+        Node slow=head;
+        Node fast=head;
+        while(fast.next!=null&&fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        System.out.println("fast completed");
+        slow.next=Reverse(slow.next);
+        slow=slow.next;
+        Node dummy=head;
+        printLinkedList(head);
+        while(slow!=null){
+            if(slow.data!=dummy.data){
+                return false;
+            }
+            slow=slow.next;
+            dummy=dummy.next;
+        }
+        return true;
     }
     public static Node buildLinkedList(){
         Scanner sc = new Scanner(System.in);
@@ -59,9 +74,7 @@ public class Reversegroup {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         Node head1=buildLinkedList();
-        System.out.println("Enter groups number");
-        int n=sc.nextInt();
-        Node ans=Reverse(head1,n);
-        printLinkedList(ans);
+        boolean ans=palindrome(head1);
+        System.out.println(ans);
     }
 }
