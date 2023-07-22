@@ -6,13 +6,21 @@ public class Distinctwindow {
     public static void window(String s){
         HashSet<Character>h=new HashSet<>();
         int n=s.length();
+        int[] arr1=new int[256];
+        int length=0;
         for(int i=0;i<n;i++){
-            h.add(s.charAt(i));
+            arr1[s.charAt(i)]=0;
+        }
+        for(int i=0;i<n;i++){
+            if(arr1[s.charAt(i)]==0){
+                length++;
+                arr1[s.charAt(i)]++;
+            }
         }
         int start=0;
         int startindex=0;
         int endindex=0;
-        int distinct=h.size();
+        int distinct=length;
         int[]arr=new int[256];
         // for(int i=0;i<n;i++){
         //     arr[s.charAt(i)]++;
