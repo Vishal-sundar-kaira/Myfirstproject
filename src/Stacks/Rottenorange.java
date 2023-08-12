@@ -1,4 +1,6 @@
-public import java.util.*;
+
+package Stacks;
+import java.util.*;
 
 class Solution {
     public int orangesRotting(int[][] grid) {
@@ -12,6 +14,7 @@ class Solution {
             for (int j = 0; j < m; j++) {
                 if (grid[i][j] == 0) {
                     continue;
+
                 }
                 totalOrange++;
                 if (grid[i][j] == 2) {
